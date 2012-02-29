@@ -77,7 +77,7 @@ package com.kontagent
 		private function sendMessage(messageType:String, params:Object, successCallback:Function = null, validationErrorCallback:Function = null):void
 		{
 			// tag the version of the library
-			params.sdk = this.sdkVersion;
+			//params.sdk = this.sdkVersion;
 
 			// validate all the parameters
 			if (this.validateParams == true) {
