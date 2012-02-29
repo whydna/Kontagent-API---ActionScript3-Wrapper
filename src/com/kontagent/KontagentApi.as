@@ -11,6 +11,8 @@ package com.kontagent
 	
 	public class KontagentApi 
 	{	
+		private var sdkVersion:String = "as01";
+
 		private var baseApiUrl:String = "http://api.geo.kontagent.net/api/v1/";
 		private var baseTestServerUrl:String = "http://test-server.kontagent.com/api/v1/";
 		
@@ -62,7 +64,7 @@ package com.kontagent
 			
 			// send the request
 			loader.load(request);
-		}
+		}`
 		
 		/*
 		* Sends the API message by creating an <img> tag.
@@ -74,6 +76,9 @@ package com.kontagent
 		*/
 		private function sendMessage(messageType:String, params:Object, successCallback:Function = null, validationErrorCallback:Function = null):void
 		{
+			// tag the version of the library
+			params.sdk = this.sdkVersion;
+
 			// validate all the parameters
 			if (this.validateParams == true) {
 				for (var key:String in params) {					
@@ -129,7 +134,7 @@ package com.kontagent
 		*
 		* @return {String} A unique tracking tag
 		*/
-		public function genUniqueTrackingTag():String 
+		public function genUniqueTrackingTag():String sdkVersion
 		{
 			var tag:String = "" + this.getTimestamp() + Math.floor(Math.random()*10000);
 			tag = MD5.hash(tag);
